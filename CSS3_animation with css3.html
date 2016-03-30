@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>chapter8</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<style type="text/css">
+/*注意：写css代码时直接在chrome浏览器中调试代码，待调试到所需要的效果后直接将chrome中的样式代码粘贴下来即可*/
+li{
+  	border: 1px solid black;
+  	width: 150px;
+  	padding: 10px 5px;
+  	text-align: center;
+  	display: block;
+  	margin-left: 50%;
+  	background: -webkit-linear-gradient(rgba(244, 241, 241, 0.48), rgb(230, 237, 230));
+    background: -o-linear-gradient(rgba(244, 241, 241, 0.48), rgb(230, 237, 230));
+    background: linear-gradient(rgba(244, 241, 241, 0.48), rgb(230, 237, 230));
+  	/* margin: 10px; */
+  	border-top: 1px solid black;
+  	/* border-radius: 5px 5px 0px 0px; */
+    box-shadow: 0px 1px 1px #030000;
+    text-overflow: ellipsis;
+  	/* white-space: nowrap; */
+  	overflow: hidden;
+ }
+
+ul>li:nth-child(1){
+border-radius: 5px 5px 0px 0px;
+}
+ul>li:nth-last-child(1){
+border-radius: 0px 0px 5px 5px;
+}
+
+li:hover{
+background:red;
+}
+
+/*易错点：这里的自定义样式test前面有个小点*/
+/*注意：一般将动画定义成一个样式，给某个元素添加包含动画的样式时就会自动执行*/
+.test{
+animation:slide 0.5s ease-in-out;
+}
+
+@keyframes slide{
+0%{margin-left: 0%}
+50%{margin-left: 25%}
+100%{margin-left: 50%}
+}
+
+</style>
+<script type="text/javascript">
+/*动画执行完后自动清空包含动画的样式，这样保证下次添加动画样式时可以再次执行*/
+$(function(){
+	$("#list1>li").click(function(){
+		var currentLi = $(this);
+		$(this).removeClass('test').addClass("test");
+		setTimeout(function(){
+		currentLi.removeClass("test");
+	},600);
+});});
+</script>
+</head>
+<body>
+<div class="test">
+<ul id="list1">
+<li>l1</li>
+<li>l2</li>
+<li>l3</li>
+<li>l4</li>
+<li>l5</li>
+<li>l6</li>
+<li>l7</li>
+<li>l8</li>
+<li>l9</li>
+<li>l10</li>
+</ul>
+</div>
+</body>
+</html>
